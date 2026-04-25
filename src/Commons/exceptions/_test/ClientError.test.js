@@ -7,9 +7,3 @@ describe("ClientError", () => {
     );
   });
 });
-
-describe("Skenario Gagal CI", () => {
-  it("seharusnya sengaja gagal", () => {
-    expect(1 + 1).toEqual(3);
-  });
-});
