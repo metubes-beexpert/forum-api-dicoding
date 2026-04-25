@@ -1,0 +1,47 @@
+# ENV (RAHASIA)
+.env
+.env.*
+!.env.example
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build / hasil compile
+dist/
+build/
+out/
+
+# Log
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# File sensitif
+*.pem
+*.key
+*.crt
+
+# Firebase / config
+firebase-debug.log
+.firebaserc
+
+# Cache
+.cache/
+.tmp/
+
+# Database lokal
+*.sqlite
+*.db
+
+# Upload / storage
+storage/
+uploads/
