@@ -5,25 +5,17 @@ import users from "../../Interfaces/http/api/users/index.js";
 import authentications from "../../Interfaces/http/api/authentications/index.js";
 import threads from "../../Interfaces/http/api/threads/index.js";
 import likes from "../../Interfaces/http/api/likes/index.js";
-import rateLimitPg from "./rateLimitPg.js";
 
 const createServer = async (container) => {
   const app = express();
-  
-  // Wajib pada lingkungan Vercel/Proxy agar express-rate-limit berjalan dengan aman tanpa error saat menangkap IP.
-  app.set("trust proxy", 1);
 
   // Middleware for parsing JSON
   app.use(express.json());
 
-  // Setup custom rate limit menggunakan PostgresDB
-  // Hal ini memastikan Vercel Serverless bisa memiliki memory terpusat (centralized store) tanpa crash
-  const threadsLimiter = rateLimitPg;
-
   // Register routes
   app.use("/users", users(container));
   app.use("/authentications", authentications(container));
-  app.use("/threads", threadsLimiter, threads(container));
+  app.use("/threads", threads(container));
   likes.register(app, { container });
 
   // Global error handler
